@@ -7,5 +7,6 @@ def main_menu(Message,bot):
     keyboard.add(InlineKeyboardButton(text="Тренировка",callback_data="start_training"))
     keyboard.add(InlineKeyboardButton(text="О боте",callback_data="about_bot"))
     keyboard.add(InlineKeyboardButton(text="Мои данные",callback_data="about_user"))
+    keyboard.add(InlineKeyboardButton(text="Посмотреть результаты",callback_data="show_results"))
     text = "Главное меню, выбирай:"
     return text, keyboard

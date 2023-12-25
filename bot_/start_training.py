@@ -24,7 +24,7 @@ def start_training(Message,bot):
             text = "А ты еще не добавил свои упражнения, введи название что б продолжить."
             bot.register_next_step_handler_by_chat_id(Message.from_user.id,add_exersice,bot)
         else:
-            text = "Выбирай упражнение бичара"
+            text = "Выбирай упражнение"
             for i in exersices:
                 keyboard.add(InlineKeyboardButton(text=i.name,callback_data=f"start_training/result/{i.id}"))
             keyboard.add(InlineKeyboardButton(text="Добавить упражнение",callback_data="start_training/add_exersice"))

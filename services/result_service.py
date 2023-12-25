@@ -10,3 +10,7 @@ def add_result(chat_id,exersice_id,set,weight):
     result.set = set
     result.weight = weight
     result.save()
+
+def find_exersice_results(chat_id,exersice_id):
+    results = Results().select().join(Exersice).where(Exersice.id==exersice_id).switch(Results).join(User).where(User.chat_id == chat_id)
+    return results

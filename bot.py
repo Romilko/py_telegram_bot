@@ -6,7 +6,7 @@ import bot_.bot_info as bot_info
 import bot_.show_user_info as show_user_info
 import bot_.main_menu as main_menu
 import bot_.start_training as start_training
-
+import bot_.show_results as show_results
 bot = telebot.TeleBot("6196473654:AAHvg4cwgO8H62EGfqz9i2JaOvG-x0rZnFM")
 ConnsetToDb.connect()
 
@@ -27,6 +27,8 @@ def callback_handler(call):
         bot_info.show_bot_info(call,bot)
     elif data.startswith("about_user"):
         show_user_info.show_user_info(call,bot)
+    elif data.startswith("show_results"):
+        show_results.show_results(call,bot)
 
 bot.register_next_step_handler_by_chat_id
 bot.polling(none_stop=True, interval=0)
