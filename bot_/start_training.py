@@ -4,7 +4,7 @@ import services.exersice_service as service
 import services.result_service as result_service
 
 
-set =""
+set = {}
 
 @decorator.message_text_and_keyboard
 def start_training(Message,bot):
@@ -41,7 +41,8 @@ def add_exersice(Message,bot):
 @decorator.message_text_decorator
 def add_set(Message,bot,exersice_id):
     global set
-    set = Message.text
+    chat_id = Message.from_user.id
+    set[chat_id] = Message.text
     chat_id = Message.from_user.id 
     text = "Сколько вес?"
     bot.register_next_step_handler_by_chat_id(chat_id,add_weight,bot,exersice_id)
@@ -52,5 +53,5 @@ def add_set(Message,bot,exersice_id):
 def add_weight(Message,bot,exersice_id):
     chat_id = Message.from_user.id 
     text = "Ну ты зверюга."
-    result_service.add_result(chat_id,exersice_id,set,Message.text)
+    result_service.add_result(chat_id,exersice_id,set[chat_id],Message.text)
     return text
